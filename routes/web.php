@@ -11,7 +11,7 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/phpfirebase_sdk', 'FirebaseController@index');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'FirebaseController@index');

@@ -25,17 +25,19 @@ class FirebaseController extends Controller
 
         $database = $firebase->getDatabase();
 
-        $newPost = $database
+        $data = $database->getReference('dashboard_data')->getSnapshot()->getValue();
 
-            ->getReference('blog/posts')
+        // $newPost = $database
 
-            ->push([
+        //     ->getReference('dashboard_data/')
 
-                'title' => 'Post title',
+        //     ->push([
 
-                'body' => 'This should probably be longer.',
+        //         'user_id' => '2',
 
-            ]);
+        //         'body' => 'Testdataaaa',
+
+        //     ]);
 
 //$newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
 
@@ -49,7 +51,8 @@ class FirebaseController extends Controller
 
         echo "<pre>";
 
-        print_r($newPost->getvalue());
+        // print_r($newPost->getvalue());
+        print_r($data);
 
     }
 
