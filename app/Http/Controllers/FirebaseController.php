@@ -8,8 +8,6 @@ use Kreait\Firebase\ServiceAccount;
 class FirebaseController extends Controller
 {
 
-//
-
     public function index()
     {
 
@@ -25,19 +23,25 @@ class FirebaseController extends Controller
 
         $database = $firebase->getDatabase();
 
-        $data = $database->getReference('dashboard_data')->getSnapshot()->getValue();
+        // $data = $database->getReference('dashboard_data')->getSnapshot()->getValue();
 
         // $newPost = $database
 
-        //     ->getReference('dashboard_data/')
-
-        //     ->push([
-
-        //         'user_id' => '2',
-
-        //         'body' => 'Testdataaaa',
-
-        //     ]);
+        // ->getReference('workout/')
+        // ->push([
+        //     'id' => '2',
+        //     'date' => '07/12/2018',
+        //     'exercises' => [
+        //         '1' => [
+        //             'reps' => 10,
+        //             'timer' => 55,
+        //         ],
+        //         '2' => [
+        //             'reps' => 8,
+        //             'timer' => 40,
+        //         ],
+        //     ],
+        // ]);
 
 //$newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
 
