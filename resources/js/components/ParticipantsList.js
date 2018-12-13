@@ -17,22 +17,29 @@ class ParticipantsList extends Component {
     componentDidMount() {
         axios.get("api/get_latest_workout").then(res => {
             const workoutList = res.data;
-            this.setState({ workoutList: workoutList });
+            this.setState({ workoutList: workoutList[1].exercise });
             // console.log(workoutList);
         });
     }
 
     renderWorkoutList() {
         const { workoutList } = this.state;
-        console.log(workoutList);
         return (
             <ul>
-                {this.state.workoutList.map((workout, i) => {
+                {Object.keys(this.state.workoutList).map((workout, i) => {
+                    let value;
+                    if (workout == "push_ups") {
+                        value = workoutList.push_ups;
+                    } else {
+                        value = workoutList.sit_ups;
+                    }
                     return (
                         <li key={i}>
-                            Pushup reps: {workoutList[1].exercise.push_ups}{" "}
+                            {console.log(workoutList.workout)}
+                            {workout}
+                            {": "}
+                            {value}
                             <br />
-                            Situp reps: {workoutList[1].exercise.sit_ups}
                         </li>
                     );
                 })}
