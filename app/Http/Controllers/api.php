@@ -21,17 +21,12 @@ class api extends Controller
         $database = $firebase->getDatabase();
 
         $data = $database->getReference('workout')
-        // ->getChild()
-        // ->limitToLast(1)
             ->orderByKey()
-
             ->limitToFirst(1)
         // ->limitToLast(1)
             ->getSnapshot()
             ->getValue();
 
-        print_r($data);
-
-        // return json_encode($data);
+        return json_encode($data);
     }
 }
