@@ -25,7 +25,7 @@ class ParticipantsList extends Component {
     renderWorkoutList() {
         const { workoutList } = this.state;
         return (
-            <ul>
+            <ul className="list-group pl-3 pb-3 pr-3">
                 {Object.keys(this.state.workoutList).map((workout, i) => {
                     let value;
                     if (workout == "push_ups") {
@@ -34,7 +34,10 @@ class ParticipantsList extends Component {
                         value = workoutList.sit_ups;
                     }
                     return (
-                        <li key={i}>
+                        <li
+                            key={i}
+                            className="shadow-sm col-sm-12 list-group-item p-3 mb-2 bg-white rounded"
+                        >
                             {console.log(workoutList.workout)}
                             {workout}
                             {": "}
@@ -47,22 +50,16 @@ class ParticipantsList extends Component {
         );
     }
 
-    // renderExcerciseList(workout) {
-    //     // const { exc } = this.state;
-
-    //     let elements;
-    //     elements = this.state.workoutList[1].exercise.map((exercise, i) => {
-    //         return <div key={i}>{exercise}</div>;
-    //     });
-
-    //     return <div>{elements}</div>;
-    // }
-
     render() {
         return (
             <div>
-                <p>workouts</p>
-                {this.renderWorkoutList()}
+                <h1 className="mt-5 mb-4">Workouts</h1>
+                <div className="card col-sm-4">
+                    <div className="card-body p-3">
+                        <h5 className="card-title">John Doe</h5>
+                    </div>
+                    {this.renderWorkoutList()}
+                </div>
             </div>
         );
     }

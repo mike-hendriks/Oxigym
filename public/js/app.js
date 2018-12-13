@@ -62628,7 +62628,7 @@ var ParticipantsList = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "ul",
-                null,
+                { className: "list-group pl-3 pb-3 pr-3" },
                 Object.keys(this.state.workoutList).map(function (workout, i) {
                     var value = void 0;
                     if (workout == "push_ups") {
@@ -62638,7 +62638,10 @@ var ParticipantsList = function (_Component) {
                     }
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "li",
-                        { key: i },
+                        {
+                            key: i,
+                            className: "shadow-sm col-sm-12 list-group-item p-3 mb-2 bg-white rounded"
+                        },
                         console.log(workoutList.workout),
                         workout,
                         ": ",
@@ -62648,18 +62651,6 @@ var ParticipantsList = function (_Component) {
                 })
             );
         }
-
-        // renderExcerciseList(workout) {
-        //     // const { exc } = this.state;
-
-        //     let elements;
-        //     elements = this.state.workoutList[1].exercise.map((exercise, i) => {
-        //         return <div key={i}>{exercise}</div>;
-        //     });
-
-        //     return <div>{elements}</div>;
-        // }
-
     }, {
         key: "render",
         value: function render() {
@@ -62667,11 +62658,24 @@ var ParticipantsList = function (_Component) {
                 "div",
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "p",
-                    null,
-                    "workouts"
+                    "h1",
+                    { className: "mt-5 mb-4" },
+                    "Workouts"
                 ),
-                this.renderWorkoutList()
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "div",
+                    { className: "card col-sm-4" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "card-body p-3" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "h5",
+                            { className: "card-title" },
+                            "John Doe"
+                        )
+                    ),
+                    this.renderWorkoutList()
+                )
             );
         }
     }]);
