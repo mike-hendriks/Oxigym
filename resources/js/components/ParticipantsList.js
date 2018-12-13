@@ -8,7 +8,8 @@ class ParticipantsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            workoutList: []
+            workoutList: [],
+            exerciseList: []
             // workoutId: "",
             // name: ""
         };
@@ -17,29 +18,43 @@ class ParticipantsList extends Component {
     componentDidMount() {
         axios.get("api/get_latest_workout").then(res => {
             const workoutList = res.data;
-            this.setState({ workoutList: workoutList });
-            // console.log(workoutList);
+            const exerciseList = workoutList[1].exercise;
+            this.setState({
+                workoutList: workoutList,
+                exerciseList: exerciseList
+            });
+            // console.log(exerciseList);
         });
     }
 
+    // renderWorkoutList() {
+    //     const { workoutList } = this.state;
+    //     console.log(workoutList);
+    //     return (
+    //         <ul>
+    //             {this.state.workoutList.map((workout, i) => {
+    //                 return (
+    //                     <li key={i}>
+    //                         Pushup reps: {workoutList[1].exercise.push_ups}{" "}
+    //                         <br />
+    //                         Situp reps: {workoutList[1].exercise.sit_ups}
+    //                     </li>
+    //                 );
+    //             })}
+    //         </ul>
+    //     );
+    // }
+
     renderWorkoutList() {
-        const { workoutList } = this.state;
-        console.log(workoutList);
+        const { exerciseList } = this.state;
+        console.log(exerciseList);
         return (
             <ul>
-                {this.state.workoutList.map((workout, i) => {
-                    return (
-                        <li key={i}>
-                            Pushup reps: {workoutList[1].exercise.push_ups}{" "}
-                            <br />
-                            Situp reps: {workoutList[1].exercise.sit_ups}
-                        </li>
-                    );
-                })}
+                <li>Amount of push up reps: {exerciseList.push_ups}</li>
+                <li>Amount of sit ups reps: {exerciseList.sit_ups}</li>
             </ul>
         );
     }
-
     // renderExcerciseList(workout) {
     //     // const { exc } = this.state;
 

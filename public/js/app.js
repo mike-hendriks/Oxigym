@@ -62603,7 +62603,8 @@ var ParticipantsList = function (_Component) {
         var _this = _possibleConstructorReturn(this, (ParticipantsList.__proto__ || Object.getPrototypeOf(ParticipantsList)).call(this, props));
 
         _this.state = {
-            workoutList: []
+            workoutList: [],
+            exerciseList: []
             // workoutId: "",
             // name: ""
         };
@@ -62617,34 +62618,56 @@ var ParticipantsList = function (_Component) {
 
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get("api/get_latest_workout").then(function (res) {
                 var workoutList = res.data;
-                _this2.setState({ workoutList: workoutList });
-                // console.log(workoutList);
+                var exerciseList = workoutList[1].exercise;
+                _this2.setState({
+                    workoutList: workoutList,
+                    exerciseList: exerciseList
+                });
+                // console.log(exerciseList);
             });
         }
+
+        // renderWorkoutList() {
+        //     const { workoutList } = this.state;
+        //     console.log(workoutList);
+        //     return (
+        //         <ul>
+        //             {this.state.workoutList.map((workout, i) => {
+        //                 return (
+        //                     <li key={i}>
+        //                         Pushup reps: {workoutList[1].exercise.push_ups}{" "}
+        //                         <br />
+        //                         Situp reps: {workoutList[1].exercise.sit_ups}
+        //                     </li>
+        //                 );
+        //             })}
+        //         </ul>
+        //     );
+        // }
+
     }, {
         key: "renderWorkoutList",
         value: function renderWorkoutList() {
-            var workoutList = this.state.workoutList;
+            var exerciseList = this.state.exerciseList;
 
-            console.log(workoutList);
+            console.log(exerciseList);
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "ul",
                 null,
-                this.state.workoutList.map(function (workout, i) {
-                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "li",
-                        { key: i },
-                        "Pushup reps: ",
-                        workoutList[1].exercise.push_ups,
-                        " ",
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-                        "Situp reps: ",
-                        workoutList[1].exercise.sit_ups
-                    );
-                })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "li",
+                    null,
+                    "Amount of push up reps: ",
+                    exerciseList.push_ups
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "li",
+                    null,
+                    "Amount of sit ups reps: ",
+                    exerciseList.sit_ups
+                )
             );
         }
-
         // renderExcerciseList(workout) {
         //     // const { exc } = this.state;
 
