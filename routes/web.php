@@ -14,4 +14,4 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'FirebaseController@index');
+Route::get('/', 'Controller@index');
