@@ -23,7 +23,7 @@ class FirebaseController extends Controller
 
         $database = $firebase->getDatabase();
 
-        // $data = $database->getReference('dashboard_data')->getSnapshot()->getValue();
+        $data = $database->getReference('user')->getSnapshot()->getValue();
 
         // $newPost = $database
 
