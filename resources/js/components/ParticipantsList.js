@@ -8,7 +8,8 @@ class ParticipantsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            workoutList,
+            workoutList: [],
+            workoutId: "",
             name: ""
         };
     }
@@ -21,12 +22,35 @@ class ParticipantsList extends Component {
         });
     }
 
-    renderWorkoutList = () => {};
+    renderWorkoutList = () => {
+        const { workoutList } = this.state;
+        console.log(workoutList);
+        return (
+            <div className="workoutList">
+                <ul className="list">
+                    {workoutList.map((workout, i) => {
+                        return (
+                            <li
+                                key={i}
+                                id={workout.id}
+                                // className="selectList"
+                                onClick={() =>
+                                    this.handleSelectClick(company.id)
+                                }
+                            >
+                                {workout.name}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    };
 
     render() {
         return (
             <div>
-                <p>workouts:</p>
+                <p>workouts</p>
                 {this.renderWorkoutList()}
             </div>
         );
