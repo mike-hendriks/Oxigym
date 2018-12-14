@@ -15,11 +15,19 @@ class ParticipantsList extends Component {
     }
 
     componentDidMount() {
-        axios.get("api/get_latest_workout").then(res => {
-            const workoutList = res.data;
-            this.setState({ workoutList: workoutList[1].exercise });
-            // console.log(workoutList);
-        });
+        this.interval = setInterval(
+            () =>
+                axios.get("api/get_latest_workout").then(res => {
+                    const workoutList = res.data;
+                    this.setState({ workoutList: workoutList[1].exercise });
+                    // console.log(workoutList);
+                }),
+            700
+        );
+    }
+
+    componentWillUnmount() {
+        clearIntervalt(this.interval);
     }
 
     renderWorkoutList() {
