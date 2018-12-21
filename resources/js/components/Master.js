@@ -3,7 +3,8 @@
 import React, { Component } from "react";
 import { Router, Route, Link } from "react-router";
 
-import ParticipantsList from "./ParticipantsList";
+// import ParticipantsList from "./ParticipantsList";
+import Firebase from "./Firebase";
 
 class Master extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Master extends Component {
     render() {
         return (
             <div className="container">
-                <ParticipantsList />
+                <Firebase />
             </div>
         );
     }
