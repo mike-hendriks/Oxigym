@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 // import { Badge } from "react-bootstrap";
 import firebase from "firebase";
 
@@ -16,6 +16,6 @@ firebase.initializeApp(config);
 // firebaseApp = firebase.initializeApp(config);
 // var UCRef = firebaseApp.database().ref("numberofusers");
 
-class Firebase extends Component {}
+// class Firebase extends Component {}
 
 export default firebase;

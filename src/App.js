@@ -5,10 +5,10 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 // import { Router, Route, browserHistory } from "react-router";
 import Start from "./components/Start";
 import StartWorkout from "./components/StartWorkout";
-import { timingSafeEqual } from "crypto";
+// import { timingSafeEqual } from "crypto";
 // // import Workout from "./components/Workout";
 
-require("./bootstrap");
+// require("./bootstrap");
 
 // render(<Start />, document.getElementById("app"));
 
@@ -17,7 +17,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      variableCool: "abc",
       code: ""
     }
   }
