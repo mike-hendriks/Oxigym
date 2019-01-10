@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase from "./Firebase";
+import firebase from "./Firestore";
 
 class User extends Component {
     constructor() {
@@ -22,7 +22,7 @@ class User extends Component {
         db.settings({
             timestampsInSnapshots: true
         });
-        const userRef = db.collection("users").add({
+        const userRef = db.collection("user").add({
             fullname: this.state.fullname,
             email: this.state.email
         });

@@ -10,9 +10,7 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="example"></div>
+        <div id="app"></div>
         <script src="{{asset('js/app.js')}}" ></script>
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script> -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script> -->
     </body>
 </html>

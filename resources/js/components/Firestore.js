@@ -12,23 +12,10 @@ const config = {
     // storageBucket: "dnavid-c48b6.appspot.com"
 };
 
-var firebaseApp = firebase.initializeApp(config);
+firebase.initializeApp(config);
+// firebaseApp = firebase.initializeApp(config);
 // var UCRef = firebaseApp.database().ref("numberofusers");
 
-class Firebase extends Component {
-    constructor(props) {
-        super(props);
+class Firebase extends Component {}
 
-        this.state = {};
-    }
-    // componentDidMount() {
-    //     UCRef.on("value", snapshot => {
-    //         this.setState({ usercount: snapshot.val() });
-    //     });
-    // }
-    render() {
-        return <div>asdas asd</div>;
-    }
-}
-
-export default Firebase;
+export default firebase;
