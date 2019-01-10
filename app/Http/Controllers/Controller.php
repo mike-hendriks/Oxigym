@@ -15,4 +15,16 @@ class Controller extends BaseController
     {
         return view('welcome');
     }
+    
+    public function startWorkout(){
+        return view('startWorkout');
+    }
+    
+    public function currentWorkout(){
+        return view('currentWorkout');
+    }
+    
+    public function scoreboard(){
+        return view('scoreboard');
+    }
 }

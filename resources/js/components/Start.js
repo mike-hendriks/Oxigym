@@ -9,7 +9,9 @@ class Start extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            code: ""
+            code: "",
+            start: "0",
+            error: ""
         };
     }
 
@@ -32,12 +34,35 @@ class Start extends Component {
         const workoutRef = db.collection("workout").doc();
         workoutRef
             .set({
-                code
+                code,
+                start: 0
             })
             .then(() => {
                 const workout_id = workoutRef.id;
+                this.setState({
+                    workout_id
+                });
                 this.addExercisesToWorkout(workout_id);
             });
+    };
+
+    handleStart = e => {
+        const db = firebase.firestore();
+
+        if (this.state.workout_id) {
+            const workoutRef = db
+                .collection("workout")
+                .doc(this.state.workout_id);
+            workoutRef.update({ start: 1 });
+
+            this.setState({
+                start: 1
+            });
+        } else {
+            this.setState({
+                error: "Please generate a code before starting a workout!"
+            });
+        }
     };
 
     addExercisesToWorkout = workout_id => {
@@ -60,8 +85,18 @@ class Start extends Component {
             <div className="container">
                 <h1>Start de bootcamp</h1>
                 {/* <div onClick={this.addExercisesToWorkout}>Genereer code</div> */}
-                <div onClick={this.startWorkout}>Genereer code</div>
+                <a
+                    href="/startWorkout"
+                    className="btn btn-success"
+                    // onClick={this.startWorkout}
+                >
+                    Genereer code
+                </a>
                 <p>{this.state.code}</p>
+                <p className="errorMessage">{this.state.error}</p>
+                <button className="btn btn-primary" onClick={this.handleStart}>
+                    start
+                </button>
             </div>
         );
     }

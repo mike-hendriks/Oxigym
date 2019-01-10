@@ -15,3 +15,6 @@
 //     return view('welcome');
 // });
 Route::get('/', 'Controller@index');
+Route::get('/startWorkout', 'Controller@startWorkout');
+Route::get('/currentWorkout', 'Controller@currentWorkout');
+Route::get('/scoreboard', 'Controller@scoreboard');

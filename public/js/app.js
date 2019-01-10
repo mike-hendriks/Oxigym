@@ -65165,11 +65165,32 @@ var Start = function (_Component) {
 
             var workoutRef = db.collection("workout").doc();
             workoutRef.set({
-                code: code
+                code: code,
+                start: 0
             }).then(function () {
                 var workout_id = workoutRef.id;
+                _this.setState({
+                    workout_id: workout_id
+                });
                 _this.addExercisesToWorkout(workout_id);
             });
+        };
+
+        _this.handleStart = function (e) {
+            var db = __WEBPACK_IMPORTED_MODULE_2__Firestore__["a" /* default */].firestore();
+
+            if (_this.state.workout_id) {
+                var workoutRef = db.collection("workout").doc(_this.state.workout_id);
+                workoutRef.update({ start: 1 });
+
+                _this.setState({
+                    start: 1
+                });
+            } else {
+                _this.setState({
+                    error: "Please generate a code before starting a workout!"
+                });
+            }
         };
 
         _this.addExercisesToWorkout = function (workout_id) {
@@ -65188,7 +65209,9 @@ var Start = function (_Component) {
         };
 
         _this.state = {
-            code: ""
+            code: "",
+            start: "0",
+            error: ""
         };
         return _this;
     }
@@ -65205,14 +65228,28 @@ var Start = function (_Component) {
                     "Start de bootcamp"
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "div",
-                    { onClick: this.startWorkout },
+                    "a",
+                    {
+                        href: "/startWorkout",
+                        className: "btn btn-success"
+                        // onClick={this.startWorkout}
+                    },
                     "Genereer code"
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "p",
                     null,
                     this.state.code
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "p",
+                    { className: "errorMessage" },
+                    this.state.error
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "button",
+                    { className: "btn btn-primary", onClick: this.handleStart },
+                    "start"
                 )
             );
         }

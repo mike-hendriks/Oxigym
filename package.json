@@ -27,6 +27,7 @@
     "dependencies": {
         "composer": "^4.1.0",
         "firebase": "^5.7.0",
+        "link-react": "^3.0.0",
         "react-router": "^4.3.1"
     }
 }
