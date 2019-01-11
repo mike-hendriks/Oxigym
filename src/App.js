@@ -17,15 +17,18 @@ class App extends Component {
 
   setCode = code => {
     this.setState({ code });
+    
   }
 
   render() {
     return (
+      
       <div className="App">
          <BrowserRouter>
           <Switch>
             <Route exact path="/" render={props => <Start {...props} state={this.state} setCode={this.setCode}/>} />
-              <Route path="/startWorkout" render={props => <StartWorkout {...props} state={this.state} />} />
+              {/* <Route path="/startWorkout" render={props => <StartWorkout {...props} state={this.state} />} /> */}
+            <Route path="/startWorkout" render={props => <StartWorkout {...props} state={this.state} code={this.state.code} />} />
               <Route render={() => <Redirect to="/" />} />
           </Switch>
         </BrowserRouter>

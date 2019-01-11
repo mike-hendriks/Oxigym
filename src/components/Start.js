@@ -1,6 +1,7 @@
 // Start.js
 
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 // import { Router, Route, Link } from "react-router";
 
 import firebase from "./Firestore";
@@ -24,7 +25,7 @@ class Start extends Component {
         return Math.floor(random_number);
     };
 
-    startWorkout = e => {
+    sendCode = e => {
         e.preventDefault();
         const db = firebase.firestore();
         const code = this.generateCode(1000, 9999);
@@ -32,6 +33,7 @@ class Start extends Component {
             code
         });
         this.props.setCode(code);
+        
         db.settings({
             timestampsInSnapshots: true
         });
@@ -48,27 +50,28 @@ class Start extends Component {
                     workout_id
                 });
                 this.addExercisesToWorkout(workout_id);
+                this.props.history.push("/startWorkout");
             });
     };
 
-    handleStart = e => {
-        const db = firebase.firestore();
+    // handleStart = e => {
+    //     const db = firebase.firestore();
 
-        if (this.state.workout_id) {
-            const workoutRef = db
-                .collection("workout")
-                .doc(this.state.workout_id);
-            workoutRef.update({ start: 1 });
+    //     if (this.state.workout_id) {
+    //         const workoutRef = db
+    //             .collection("workout")
+    //             .doc(this.state.workout_id);
+    //         workoutRef.update({ start: 1 });
 
-            this.setState({
-                start: 1
-            });
-        } else {
-            this.setState({
-                error: "Please generate a code before starting a workout!"
-            });
-        }
-    };
+    //         this.setState({
+    //             start: 1
+    //         });
+    //     } else {
+    //         this.setState({
+    //             error: "Please generate a code before starting a workout!"
+    //         });
+    //     }
+    // };
 
     addExercisesToWorkout = workout_id => {
         const db = firebase.firestore();
@@ -90,18 +93,21 @@ class Start extends Component {
             <div className="container">
                 <h1>Start de bootcamp</h1>
                 {/* <div onClick={this.addExercisesToWorkout}>Genereer code</div> */}
-                <a
-                    // href="/startWorkout"
-                    className="btn btn-success"
-                    onClick={this.startWorkout}
+
+                {/* <Link to="/startWorkout">Genereer code</Link> */}
+
+
+                <button
+                    className=""
+                    onClick={this.sendCode}
                 >
                     Genereer code
-                </a>
-                <p>{this.state.code}</p>
-                <p className="errorMessage">{this.state.error}</p>
+                </button>
+                {/* <p>{this.state.code}</p> */}
+                {/* <p className="errorMessage">{this.state.error}</p>
                 <button className="btn btn-primary" onClick={this.handleStart}>
                     start
-                </button>
+                </button> */}
             </div>
         );
     }
