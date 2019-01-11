@@ -13,7 +13,7 @@ class App extends Component {
 
         this.state = {
             code: "",
-            workout_id: ""
+            workout_id: "K0IGDcnPREMCRy8yxLpa"
         };
     }
 
@@ -55,7 +55,7 @@ class App extends Component {
                                 <CurrentWorkout
                                     {...props}
                                     state={this.state}
-                                    code={this.state.code}
+                                    // code={this.state.code}
                                 />
                             )}
                         />
