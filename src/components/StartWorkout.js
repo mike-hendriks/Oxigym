@@ -41,7 +41,7 @@ class StartWorkout extends Component {
                 <h1>Vul de code in</h1>
                 <h2>{this.state.code}</h2>
                 <p>{this.state.workout_id}</p>
-                <button onClick={this.handleClick}>start</button>
+                <button onClick={this.handleClick}>START</button>
             </div>
         );
     }

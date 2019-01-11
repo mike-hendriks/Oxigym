@@ -1,95 +1,96 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
 // Variables
 @import "./scss/variables";
-
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    // font-size: $font-size-p;
-    font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; // font-size: $font-size-p;
+  font-family: 'Roboto';
 }
 
 #example {
-    padding: 0px;
-    width: 100%;
-    height: 100%;
-    // background-color: $body-bg;
+  padding: 0px;
+  width: 100%;
+  height: 100%; // background-color: $body-bg;
 }
+
 .startContainer {
-    background-color: $white;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-        font-size: 3em;
+  background-color: $white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 5em;
+    width: 400px;
+    text-align: center;
+    word-wrap: break-word;
+  }
+  button {
+    background: linear-gradient(to bottom right, #83f647, #64b63a);
+    border: none;
+    border-radius: 124px;
+    color: $white;
+    padding: 10px 50px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px $grey;
+    transition: background 0.5s ease 0s;
+    &:hover {
+      background: linear-gradient( to bottom right, #64b63a, #64b63a);
     }
-
-    button {
-        background-color: #74d641;
-        border: none;
-        border-radius: 124px;
-        color: $white;
-        padding: 10px;
-        font-size: 15px;
-        cursor: pointer;
-        box-shadow: 0px 2px 4px $grey;
-        transition: 0.2s;
-
-        &:hover {
-            background-color: #488a24;
-        }
-    }
+  }
 }
 
 .startWorkoutContainer {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    color: $white;
-    background: linear-gradient(to bottom right, #83f647, #64b63a);
-    h1 {
-        color: #d6f5c6;
-        font-size: 3em;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: $white;
+  background: linear-gradient(to bottom right, #83f647, #64b63a);
+  h1 {
+    color: #d6f5c6;
+    font-size: 5em;
+  }
+  h2 {
+    font-size: 4em;
+    font-weight: bold;
+  }
+  p {
+    opacity: 0;
+  }
+  button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    outline: none;
+    &:hover {
+      color: hsl(0, 0%, 83%);
     }
-    h2 {
-        font-size: 2.5em;
-        font-weight: bold;
-    }
-
-    button {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.2em;
-        cursor: pointer;
-        transition: 0.2s;
-
-        &:hover {
-            color: hsl(0, 0%, 83%);
-        }
-    }
+  }
 }
 
 .errorMessage {
-    color: $error;
+  color: $error;
 }
