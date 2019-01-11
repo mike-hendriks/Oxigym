@@ -1,7 +1,7 @@
 // Start.js
 
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 // import { Router, Route, Link } from "react-router";
 
 import firebase from "./Firestore";
@@ -12,13 +12,14 @@ class Start extends Component {
         this.state = {
             code: "",
             start: "0",
-            error: ""
+            error: "",
+            workout_id: ""
         };
     }
 
     componentDidMount = () => {
         this.setState(this.props.state);
-    }
+    };
 
     generateCode = (min, max) => {
         let random_number = Math.random() * (max - min) + min;
@@ -33,7 +34,7 @@ class Start extends Component {
             code
         });
         this.props.setCode(code);
-        
+
         db.settings({
             timestampsInSnapshots: true
         });
@@ -49,6 +50,7 @@ class Start extends Component {
                 this.setState({
                     workout_id
                 });
+                this.props.setworkoutid(workout_id);
                 this.addExercisesToWorkout(workout_id);
                 this.props.history.push("/startWorkout");
             });
@@ -90,17 +92,13 @@ class Start extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="startContainer">
                 <h1>Start de bootcamp</h1>
                 {/* <div onClick={this.addExercisesToWorkout}>Genereer code</div> */}
 
                 {/* <Link to="/startWorkout">Genereer code</Link> */}
 
-
-                <button
-                    className=""
-                    onClick={this.sendCode}
-                >
+                <button className="" onClick={this.sendCode}>
                     Genereer code
                 </button>
                 {/* <p>{this.state.code}</p> */}
