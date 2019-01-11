@@ -1,16 +1,17 @@
 // Start.js
 
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import firebase from "./Firestore";
 // import { Router, Route, Link } from "react-router";
 
-import firebase from "./Firestore";
 
 class Start extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            code: "",
+            code: 8603,
+            workoutId: "HGZty96Bm6COhfh4XwZS",
             start: "0",
             error: ""
         };
@@ -49,6 +50,7 @@ class Start extends Component {
                 this.setState({
                     workout_id
                 });
+                this.props.setWorkoutId(workout_id);
                 this.addExercisesToWorkout(workout_id);
                 this.props.history.push("/startWorkout");
             });

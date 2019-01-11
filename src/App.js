@@ -11,13 +11,16 @@ class App extends Component {
     super(props);
 
     this.state = {
-      code: ""
+      code: 8603,
+      workoutId: "HGZty96Bm6COhfh4XwZS",
     }
   }
 
   setCode = code => {
     this.setState({ code });
-    
+  }
+  setWorkoutId = workoutId => {
+    this.setState({ workoutId });
   }
 
   render() {
@@ -26,7 +29,7 @@ class App extends Component {
       <div className="App">
          <BrowserRouter>
           <Switch>
-            <Route exact path="/" render={props => <Start {...props} state={this.state} setCode={this.setCode}/>} />
+            <Route exact path="/" render={props => <Start {...props} state={this.state} setWorkoutId={this.setWorkoutId} setCode={this.setCode}/>} />
               {/* <Route path="/startWorkout" render={props => <StartWorkout {...props} state={this.state} />} /> */}
             <Route path="/startWorkout" render={props => <StartWorkout {...props} state={this.state} code={this.state.code} />} />
               <Route render={() => <Redirect to="/" />} />
