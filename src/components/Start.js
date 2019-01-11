@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import { Link } from 'react-router-dom'
 import firebase from "./Firestore";
+import { exists } from "fs";
 // import { Router, Route, Link } from "react-router";
 
 class Start extends Component {
@@ -25,8 +26,7 @@ class Start extends Component {
         return Math.floor(random_number);
     };
 
-    sendCode = e => {
-        e.preventDefault();
+    sendCode = workout_number => {
         const db = firebase.firestore();
         const code = this.generateCode(1000, 9999);
         this.setState({
@@ -50,22 +50,17 @@ class Start extends Component {
                     workout_id
                 });
                 this.props.setWorkoutId(workout_id);
-                this.addExercisesToWorkout(workout_id);
+                this.addExercisesToWorkout(workout_id, workout_number);
                 this.props.history.push("/startWorkout");
             });
     };
 
-    addExercisesToWorkout = workout_id => {
+    addExercisesToWorkout =( workout_id, workout_number) => {
         const db = firebase.firestore();
         const exerciseWorkoutRef = db.collection("workout_exercise").doc();
-        const exerciseWorkoutRef2 = db.collection("workout_exercise").doc();
+        const exercise_id = (workout_number == 1 ? "pushups" : "situps");
         exerciseWorkoutRef.set({
-            exercise_id: "pushups",
-            workout_id
-        });
-
-        exerciseWorkoutRef2.set({
-            exercise_id: "situps",
+            exercise_id,
             workout_id
         });
     };
@@ -75,8 +70,11 @@ class Start extends Component {
             <div className="startContainer">
                 <h1>Start de bootcamp</h1>
 
-                <button className="" onClick={this.sendCode}>
-                    Genereer code
+                <button className="" onClick={() => this.sendCode(1)}>
+                    Workout 1
+                </button>
+                <button onClick={() => this.sendCode(2)}>
+                    Workout 2
                 </button>
             </div>
         );

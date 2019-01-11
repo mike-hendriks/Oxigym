@@ -5,7 +5,9 @@ class CurrentWorkout extends Component {
         super(props);
     }
     render() {
-        return <div />;
+        return (<div>
+            dikke ebola
+        </div>);
     }
 }
 
