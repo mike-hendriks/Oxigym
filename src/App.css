@@ -62,7 +62,10 @@ body {
     border: none;
     color: white;
     font-size: 1.2em;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: 0.2s; }
+    .startWorkoutContainer button:hover {
+      color: #d4d4d4; }
 
 .errorMessage {
   color: #e3342f; }

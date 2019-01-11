@@ -82,6 +82,11 @@ body {
         color: white;
         font-size: 1.2em;
         cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            color: hsl(0, 0%, 83%);
+        }
     }
 }
 
