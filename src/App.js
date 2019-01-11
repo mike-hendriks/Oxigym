@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Start from "./components/Start";
 import StartWorkout from "./components/StartWorkout";
+import CurrentWorkout from "./components/CurrentWorkout";
 import "./App.css";
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
     setCode = code => {
         this.setState({ code });
     };
-    setworkoutid = workout_id => {
+    setWorkoutId = workout_id => {
         this.setState({ workout_id });
     };
 
@@ -35,8 +36,8 @@ class App extends Component {
                                 <Start
                                     {...props}
                                     state={this.state}
+                                    setWorkoutId={this.setWorkoutId}
                                     setCode={this.setCode}
-                                    setworkoutid={this.setworkoutid}
                                 />
                             )}
                         />
@@ -47,6 +48,18 @@ class App extends Component {
                                 <StartWorkout {...props} state={this.state} />
                             )}
                         />
+
+                        <Route
+                            path="/currentWorkout"
+                            render={props => (
+                                <CurrentWorkout
+                                    {...props}
+                                    state={this.state}
+                                    code={this.state.code}
+                                />
+                            )}
+                        />
+
                         <Route render={() => <Redirect to="/" />} />
                     </Switch>
                 </BrowserRouter>

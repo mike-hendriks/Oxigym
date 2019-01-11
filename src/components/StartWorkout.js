@@ -1,23 +1,30 @@
 import React, { Component } from "react";
-
 import firebase from "./Firestore";
+const firestore = firebase.firestore();
+const settings = { /* your settings... */ timestampsInSnapshots: true };
+firestore.settings(settings);
 
 class StartWorkout extends Component {
     constructor(props) {
         super(props);
         this.state = {
             code: "",
-            start: "0",
-            error: "",
-            workout_id: ""
+            workout_id: "",
+            users: [],
+            start: "0"
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
+        const { code, workout_id } = this.props.state;
         this.setState({
-            code: this.props.state.code,
-            workout_id: this.props.state.workout_id
+            code,
+            workout_id
         });
+
+        setTimeout(() => {
+            this.getPoints();
+        }, 1000);
     }
 
     handleClick = e => {
@@ -34,13 +41,46 @@ class StartWorkout extends Component {
             });
         }
     };
+    getPoints = () => {
+        const db = firebase.firestore();
+        db.collection("point")
+            .where("workout_id", "==", this.state.workout_id)
+            .onSnapshot(querySnapshot => {
+                let users = [];
+                querySnapshot.forEach(doc => {
+                    const user_id = doc.data().user_id;
+                    const point = doc.data().point;
+
+                    db.collection("user")
+                        .doc(user_id)
+                        .get()
+                        .then(querySnapshot => {
+                            const name = querySnapshot.data().fullname;
+                            users.push({ user_id, name, point });
+                            this.setState({ users });
+                        });
+                });
+            });
+    };
 
     render() {
+        const { users } = this.state;
         return (
             <div className="startWorkoutContainer">
                 <h1>Vul de code in</h1>
                 <h2>{this.state.code}</h2>
                 <p>{this.state.workout_id}</p>
+                <ul>
+                    {users.map((user, i) => {
+                        return (
+                            <li key={i}>
+                                {console.log(users)}
+                                <p>{user.name}</p>
+                                {/* <p>{user.point}</p> */}
+                            </li>
+                        );
+                    })}
+                </ul>
                 <button onClick={this.handleClick}>START</button>
             </div>
         );

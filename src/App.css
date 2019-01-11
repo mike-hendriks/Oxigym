@@ -11,7 +11,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto'; }
+  font-family: "Roboto"; }
 
 #example {
   padding: 0px;
@@ -62,7 +62,7 @@ body {
     font-size: 4em;
     font-weight: bold; }
   .startWorkoutContainer p {
-    opacity: 0; }
+    opacity: 1; }
   .startWorkoutContainer button {
     background: none;
     border: none;
@@ -71,6 +71,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+    outline: none;
     outline: none; }
     .startWorkoutContainer button:hover {
       color: #d4d4d4; }

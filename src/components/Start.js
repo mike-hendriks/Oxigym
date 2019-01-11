@@ -2,16 +2,15 @@
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import { Router, Route, Link } from "react-router";
-
+// import { Link } from 'react-router-dom'
 import firebase from "./Firestore";
+// import { Router, Route, Link } from "react-router";
 
 class Start extends Component {
     constructor(props) {
         super(props);
         this.state = {
             code: "",
-            start: "0",
             error: "",
             workout_id: ""
         };
@@ -50,30 +49,11 @@ class Start extends Component {
                 this.setState({
                     workout_id
                 });
-                this.props.setworkoutid(workout_id);
+                this.props.setWorkoutId(workout_id);
                 this.addExercisesToWorkout(workout_id);
                 this.props.history.push("/startWorkout");
             });
     };
-
-    // handleStart = e => {
-    //     const db = firebase.firestore();
-
-    //     if (this.state.workout_id) {
-    //         const workoutRef = db
-    //             .collection("workout")
-    //             .doc(this.state.workout_id);
-    //         workoutRef.update({ start: 1 });
-
-    //         this.setState({
-    //             start: 1
-    //         });
-    //     } else {
-    //         this.setState({
-    //             error: "Please generate a code before starting a workout!"
-    //         });
-    //     }
-    // };
 
     addExercisesToWorkout = workout_id => {
         const db = firebase.firestore();
@@ -94,18 +74,10 @@ class Start extends Component {
         return (
             <div className="startContainer">
                 <h1>Start de bootcamp</h1>
-                {/* <div onClick={this.addExercisesToWorkout}>Genereer code</div> */}
-
-                {/* <Link to="/startWorkout">Genereer code</Link> */}
 
                 <button className="" onClick={this.sendCode}>
                     Genereer code
                 </button>
-                {/* <p>{this.state.code}</p> */}
-                {/* <p className="errorMessage">{this.state.error}</p>
-                <button className="btn btn-primary" onClick={this.handleStart}>
-                    start
-                </button> */}
             </div>
         );
     }
