@@ -2,15 +2,9 @@
 
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-// import { Router, Route, browserHistory } from "react-router";
 import Start from "./components/Start";
 import StartWorkout from "./components/StartWorkout";
-// import { timingSafeEqual } from "crypto";
-// // import Workout from "./components/Workout";
-
-// require("./bootstrap");
-
-// render(<Start />, document.getElementById("app"));
+import './App.css';
 
 class App extends Component {
   constructor(props) {
