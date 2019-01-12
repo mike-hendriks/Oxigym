@@ -39,6 +39,8 @@ class StartWorkout extends Component {
             this.setState({
                 start: 1
             });
+
+            this.props.history.push('/currentWorkout');
         }
     };
     getPoints = () => {
