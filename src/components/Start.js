@@ -55,10 +55,10 @@ class Start extends Component {
             });
     };
 
-    addExercisesToWorkout =( workout_id, workout_number) => {
+    addExercisesToWorkout = (workout_id, workout_number) => {
         const db = firebase.firestore();
         const exerciseWorkoutRef = db.collection("workout_exercise").doc();
-        const exercise_id = (workout_number == 1 ? "pushups" : "situps");
+        const exercise_id = workout_number === 1 ? "pushups" : "situps";
         exerciseWorkoutRef.set({
             exercise_id,
             workout_id
@@ -73,9 +73,7 @@ class Start extends Component {
                 <button className="" onClick={() => this.sendCode(1)}>
                     Workout 1
                 </button>
-                <button onClick={() => this.sendCode(2)}>
-                    Workout 2
-                </button>
+                <button onClick={() => this.sendCode(2)}>Workout 2</button>
             </div>
         );
     }
