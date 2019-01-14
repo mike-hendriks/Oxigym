@@ -57,14 +57,14 @@ class CurrentWorkout extends Component {
             .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    this.setState({ workout_name: doc.data().exercise_id});
+                    this.setState({ workout_name: doc.data().exercise_id });
                 });
-            })
+            });
 
-                    // const user_id = doc.data().user_id;
+        // const user_id = doc.data().user_id;
 
-            // });
-    }
+        // });
+    };
 
     render() {
         const { users } = this.state;
