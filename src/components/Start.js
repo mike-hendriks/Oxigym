@@ -1,10 +1,8 @@
 // Start.js
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import { Link } from 'react-router-dom'
+// import { Link } from "react-router-dom";
 import firebase from "./Firestore";
-import { exists } from "fs";
 // import { Router, Route, Link } from "react-router";
 
 class Start extends Component {

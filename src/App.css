@@ -75,6 +75,25 @@ body {
     outline: none; }
     .startWorkoutContainer button:hover {
       color: #d4d4d4; }
+  .startWorkoutContainer ul {
+    list-style-type: none;
+    padding: 0; }
+    .startWorkoutContainer ul li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 120px;
+      height: 120px;
+      background-color: #fff;
+      border-radius: 100px; }
+      .startWorkoutContainer ul li p {
+        color: rgba(255, 255, 255, 0); }
+        .startWorkoutContainer ul li p:first-letter {
+          font-size: 90px;
+          font-weight: bold;
+          text-transform: capitalize;
+          color: #64b63a; }
 
 .errorMessage {
   color: #e3342f; }

@@ -40,9 +40,10 @@ class StartWorkout extends Component {
                 start: 1
             });
 
-            this.props.history.push('/currentWorkout');
+            this.props.history.push("/currentWorkout");
         }
     };
+
     getPoints = () => {
         const db = firebase.firestore();
         db.collection("point")
@@ -53,16 +54,25 @@ class StartWorkout extends Component {
                     const user_id = doc.data().user_id;
                     const point = doc.data().point;
 
-                    db.collection("user")
-                        .doc(user_id)
-                        .get()
-                        .then(querySnapshot => {
-                            const name = querySnapshot.data().fullname;
-                            users.push({ user_id, name, point });
-                            this.setState({ users });
-                        });
+                    if (user_id) {
+                        db.collection("user")
+                            .doc(user_id)
+                            .get()
+                            .then(querySnapshot => {
+                                const name = querySnapshot.data().fullname;
+                                users.push({ user_id, name, point });
+                                this.setState({ users });
+                            });
+                    }
                 });
             });
+    };
+
+    getUserLetter = user => {
+        let U = user;
+        let result = U.charAt(0);
+
+        return result;
     };
 
     render() {
@@ -71,13 +81,12 @@ class StartWorkout extends Component {
             <div className="startWorkoutContainer">
                 <h1>Vul de code in</h1>
                 <h2>{this.state.code}</h2>
-                <p>{this.state.workout_id}</p>
+                {/* <p>{this.state.workout_id}</p> */}
                 <ul>
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                {console.log(users)}
-                                <p>{user.name}</p>
+                                <p>{this.getUserLetter(user.name)}</p>
                                 {/* <p>{user.point}</p> */}
                             </li>
                         );
