@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Start from "./components/Start";
 import StartWorkout from "./components/StartWorkout";
 import CurrentWorkout from "./components/CurrentWorkout";
+import WorkoutResult from "./components/WorkoutResult";
 import "./App.css";
 
 class App extends Component {
@@ -53,6 +54,17 @@ class App extends Component {
                             path="/currentWorkout"
                             render={props => (
                                 <CurrentWorkout
+                                    {...props}
+                                    state={this.state}
+                                    // code={this.state.code}
+                                />
+                            )}
+                        />
+
+                        <Route
+                            path="/workoutResult"
+                            render={props => (
+                                <WorkoutResult
                                     {...props}
                                     state={this.state}
                                     // code={this.state.code}

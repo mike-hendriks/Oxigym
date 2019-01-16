@@ -43,6 +43,7 @@ class StartWorkout extends Component {
             this.props.history.push("/currentWorkout");
         }
     };
+
     getPoints = () => {
         const db = firebase.firestore();
         db.collection("point")
@@ -53,14 +54,16 @@ class StartWorkout extends Component {
                     const user_id = doc.data().user_id;
                     const point = doc.data().point;
 
-                    db.collection("user")
-                        .doc(user_id)
-                        .get()
-                        .then(querySnapshot => {
-                            const name = querySnapshot.data().fullname;
-                            users.push({ user_id, name, point });
-                            this.setState({ users });
-                        });
+                    if (user_id) {
+                        db.collection("user")
+                            .doc(user_id)
+                            .get()
+                            .then(querySnapshot => {
+                                const name = querySnapshot.data().fullname;
+                                users.push({ user_id, name, point });
+                                this.setState({ users });
+                            });
+                    }
                 });
             });
     };
@@ -83,7 +86,6 @@ class StartWorkout extends Component {
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                {console.log(users)}
                                 <p>{this.getUserLetter(user.name)}</p>
                                 {/* <p>{user.point}</p> */}
                             </li>
