@@ -40,7 +40,7 @@ class StartWorkout extends Component {
                 start: 1
             });
 
-            this.props.history.push('/currentWorkout');
+            this.props.history.push("/currentWorkout");
         }
     };
     getPoints = () => {
@@ -65,19 +65,26 @@ class StartWorkout extends Component {
             });
     };
 
+    getUserLetter = user => {
+        let U = user;
+        let result = U.charAt(0);
+
+        return result;
+    };
+
     render() {
         const { users } = this.state;
         return (
             <div className="startWorkoutContainer">
                 <h1>Vul de code in</h1>
                 <h2>{this.state.code}</h2>
-                <p>{this.state.workout_id}</p>
+                {/* <p>{this.state.workout_id}</p> */}
                 <ul>
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
                                 {console.log(users)}
-                                <p>{user.name}</p>
+                                <p>{this.getUserLetter(user.name)}</p>
                                 {/* <p>{user.point}</p> */}
                             </li>
                         );
