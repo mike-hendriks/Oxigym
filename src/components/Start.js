@@ -67,11 +67,12 @@ class Start extends Component {
         return (
             <div className="startContainer">
                 <h1>Start de bootcamp</h1>
-
-                <button className="" onClick={() => this.sendCode(1)}>
-                    Workout 1
-                </button>
-                <button onClick={() => this.sendCode(2)}>Workout 2</button>
+                <div className="actionButtons">
+                    <button className="" onClick={() => this.sendCode(1)}>
+                        Workout 1
+                    </button>
+                    <button onClick={() => this.sendCode(2)}>Workout 2</button>
+                </div>
             </div>
         );
     }

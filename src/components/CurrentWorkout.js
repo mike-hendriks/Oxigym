@@ -12,8 +12,8 @@ class CurrentWorkout extends Component {
             workout_id: "",
             users: [],
             start: "0",
-            workout_name: '',
-            workout_duration: ''
+            workout_name: "",
+            workout_duration: ""
         };
     }
 
@@ -39,9 +39,8 @@ class CurrentWorkout extends Component {
                 let users = [];
                 querySnapshot.forEach(doc => {
                     const user_id = doc.data().user_id;
-                    const point = doc.data().point;                    
+                    const point = doc.data().point;
                     if (user_id) {
-
                         db.collection("user")
                             .doc(user_id)
                             .get()
@@ -62,7 +61,6 @@ class CurrentWorkout extends Component {
             .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    
                     if (doc.data().exercise_id) {
                         db.collection("exercise")
                             .doc(doc.data().exercise_id)
@@ -70,48 +68,51 @@ class CurrentWorkout extends Component {
                             .then(querySnapshot => {
                                 this.setState({
                                     workout_name: querySnapshot.data().name,
-                                    workout_duration: querySnapshot.data().time,
+                                    workout_duration: querySnapshot.data().time
                                 });
                             });
                     }
                 });
-            })
-    }
+            });
+    };
 
     startCountdown = () => {
         window.setInterval(() => {
             let time = this.state.workout_duration;
             time--;
-           
+
             if (time >= 1) {
                 this.setState({
                     workout_duration: time
-                })
+                });
             } else {
-                this.props.history.push('/workoutResult');
+                this.props.history.push("/workoutResult");
             }
-
-
         }, 1000);
+    };
 
-    }
+    getUserLetters = user => {
+        let U = user;
+        let letters = U.substring(0, 2);
 
+        return letters;
+    };
 
     render() {
         const { users } = this.state;
         return (
-            <div className="startWorkoutContainer">
+            <div className="currentWorkoutContainer">
                 <h1>Current workout</h1>
                 <h2>{this.state.workout_name}</h2>
-                <h2>{this.state.code}</h2>
-                <p>{this.state.workout_id}</p>
                 <p>Time: {this.state.workout_duration}</p>
                 <ul>
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                <p>{user.name}</p>
-                                <p>{user.point}</p>
+                                <p className="userPointBubble">{user.point}</p>
+                                <p className="userNameBubble">
+                                    {this.getUserLetters(user.name)}
+                                </p>
                             </li>
                         );
                     })}

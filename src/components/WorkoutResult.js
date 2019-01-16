@@ -10,7 +10,7 @@ class WorkoutResult extends Component {
         this.state = {
             code: "",
             workout_id: "",
-            users: [],
+            users: []
             // start: "0",
             // workout_name: '',
             // workout_duration: ''
@@ -39,9 +39,8 @@ class WorkoutResult extends Component {
                 querySnapshot.forEach(doc => {
                     const user_id = doc.data().user_id;
                     const point = doc.data().point;
-                    
-                    if (user_id) {
 
+                    if (user_id) {
                         db.collection("user")
                             .doc(user_id)
                             .get()
@@ -55,19 +54,26 @@ class WorkoutResult extends Component {
             });
     };
 
+    getUserLetters = user => {
+        let U = user;
+        let letters = U.substring(0, 2);
+
+        return letters;
+    };
+
     render() {
         const { users } = this.state;
         return (
-            <div className="startWorkoutContainer">
+            <div className="resultsWorkoutContainer">
                 <h1>Results</h1>
-                <h2>{this.state.workout_name}</h2>
-                <p>{this.state.workout_id}</p>
                 <ul>
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                <p>{user.name}</p>
-                                <p>{user.point}</p>
+                                <p className="userNameBubble">
+                                    {this.getUserLetters(user.name)}
+                                </p>
+                                <p className="userPointBubble">{user.point}</p>
                             </li>
                         );
                     })}

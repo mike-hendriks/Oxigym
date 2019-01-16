@@ -35,12 +35,13 @@ body {
     background: linear-gradient(to bottom right, #83f647, #64b63a);
     border: none;
     border-radius: 124px;
-    color: #f8f8f8;
+    color: #fff;
     padding: 10px 50px;
+    margin: 0 25px;
     font-size: 25px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0px 2px 4px #6e6e6e;
+    box-shadow: 0px 2px 4px #616161;
     transition: background 0.5s ease 0s; }
     .startContainer button:hover {
       background: linear-gradient(to bottom right, #64b63a, #64b63a); }
@@ -53,7 +54,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  color: #f8f8f8;
+  color: #fff;
   background: linear-gradient(to bottom right, #83f647, #64b63a); }
   .startWorkoutContainer h1 {
     color: #d6f5c6;
@@ -68,7 +69,7 @@ body {
   .startWorkoutContainer button {
     background: none;
     border: none;
-    color: white;
+    color: #fff;
     font-size: 2.5em;
     font-weight: bold;
     cursor: pointer;
@@ -95,10 +96,153 @@ body {
       background-color: #fff;
       border-radius: 100px; }
       .startWorkoutContainer ul li p {
-        font-size: 3.5em;
+        font-size: 3em;
         font-weight: bold;
         text-transform: uppercase;
         color: #64b63a; }
 
+.resultsWorkoutContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: #f8f8f8; }
+  .resultsWorkoutContainer h1 {
+    color: #64b63a;
+    font-size: 5em; }
+  .resultsWorkoutContainer h2 {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 4em;
+    font-weight: bold; }
+  .resultsWorkoutContainer p {
+    opacity: 1; }
+  .resultsWorkoutContainer button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    outline: none;
+    outline: none; }
+    .resultsWorkoutContainer button:hover {
+      color: #d4d4d4; }
+  .resultsWorkoutContainer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 15px 0; }
+    .resultsWorkoutContainer ul li {
+      margin: 0 15px;
+      position: relative; }
+      .resultsWorkoutContainer ul li .userPointBubble {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        background: #fff;
+        color: #64b63a;
+        border-radius: 100px;
+        font-size: 3em;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 4px 5px 10px 0 #00000015; }
+      .resultsWorkoutContainer ul li .userNameBubble {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        background: linear-gradient(to bottom right, #83f647, #64b63a);
+        box-shadow: 4px 5px 10px 0 #00000015;
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        line-height: 50px; }
+
+.currentWorkoutContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: #83f647;
+  background: #fff; }
+  .currentWorkoutContainer h1 {
+    color: #d6f5c6;
+    font-size: 5em; }
+  .currentWorkoutContainer h2 {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 4em;
+    font-weight: bold; }
+  .currentWorkoutContainer p {
+    opacity: 1; }
+  .currentWorkoutContainer button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    outline: none;
+    outline: none; }
+    .currentWorkoutContainer button:hover {
+      color: #d4d4d4; }
+  .currentWorkoutContainer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 15px 0; }
+    .currentWorkoutContainer ul li {
+      margin: 0 15px;
+      position: relative; }
+      .currentWorkoutContainer ul li .userPointBubble {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(to bottom right, #83f647, #64b63a);
+        color: #fff;
+        border-radius: 100px;
+        font-size: 3em;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 4px 5px 10px 0 #00000015; }
+      .currentWorkoutContainer ul li .userNameBubble {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #fff;
+        box-shadow: 4px 5px 10px 0 #00000015;
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #000000;
+        text-align: center;
+        line-height: 50px; }
+
 .errorMessage {
-  color: #e3342f; }
+  color: #e33; }

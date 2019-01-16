@@ -25,7 +25,7 @@ body {
 }
 
 .startContainer {
-  background-color: $white;
+  background-color: $background;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -39,11 +39,12 @@ body {
     word-wrap: break-word;
   }
   button {
-    background: linear-gradient(to bottom right, #83f647, #64b63a);
+    background: $gradientGreen;
     border: none;
     border-radius: 124px;
     color: $white;
     padding: 10px 50px;
+    margin: 0 25px;
     font-size: 25px;
     font-weight: bold;
     cursor: pointer;
@@ -64,7 +65,7 @@ body {
   align-items: center;
   margin: 0;
   color: $white;
-  background: linear-gradient(to bottom right, #83f647, #64b63a);
+  background: $gradientGreen;
   h1 {
     color: #d6f5c6;
     font-size: 5em;
@@ -81,7 +82,7 @@ body {
   button {
     background: none;
     border: none;
-    color: white;
+    color: $white;
     font-size: 2.5em;
     font-weight: bold;
     cursor: pointer;
@@ -105,20 +106,183 @@ body {
       justify-content: center;
       align-items: center;
       text-decoration: none;
-      width: $bubble-size;
-      height: $bubble-size;
-      background-color: #fff;
+      width: $bubble-size-big;
+      height: $bubble-size-big;
+      background-color: $white;
       border-radius: 100px;
       p {
-        font-size: 3.5em;
+        font-size: 3em;
         font-weight: bold;
         text-transform: uppercase;
-        color: #64b63a;
+        color: $darkGreen;
+      }
+    }
+  }
+}
+
+.resultsWorkoutContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: $background;
+  h1 {
+    color: $darkGreen;
+    font-size: 5em;
+  }
+  h2 {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 4em;
+    font-weight: bold;
+  }
+  p {
+    opacity: 1;
+  }
+  button {
+    background: none;
+    border: none;
+    color: $white;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    outline: none;
+    outline: none;
+    &:hover {
+      color: hsl(0, 0%, 83%);
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 15px 0;
+    li {
+      margin: 0 15px;
+      position: relative;
+      .userPointBubble {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: $bubble-size-big;
+        height: $bubble-size-big;
+        background: $white;
+        color: $darkGreen;
+        border-radius: 100px;
+        font-size: 3em;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 4px 5px 10px 0 #00000015;
+      }
+      .userNameBubble {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        background: $gradientGreen;
+        box-shadow: 4px 5px 10px 0 #00000015;
+        width: $bubble-size-small;
+        height: $bubble-size-small;
+        border-radius: 100px;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $white;
+        text-align: center;
+        line-height: $bubble-size-small;
+      }
+    }
+  }
+}
+
+.currentWorkoutContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: $green;
+  background: $white;
+  h1 {
+    color: #d6f5c6;
+    font-size: 5em;
+  }
+  h2 {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 4em;
+    font-weight: bold;
+  }
+  p {
+    opacity: 1;
+  }
+  button {
+    background: none;
+    border: none;
+    color: $white;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    outline: none;
+    outline: none;
+    &:hover {
+      color: hsl(0, 0%, 83%);
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 15px 0;
+    li {
+      margin: 0 15px;
+      position: relative;
+      .userPointBubble {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: $bubble-size-big;
+        height: $bubble-size-big;
+        background: $gradientGreen;
+        color: $white;
+        border-radius: 100px;
+        font-size: 3em;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 4px 5px 10px 0 #00000015;
+      }
+      .userNameBubble {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        background-color: $white;
+        box-shadow: 4px 5px 10px 0 #00000015;
+        width: $bubble-size-small;
+        height: $bubble-size-small;
+        border-radius: 100px;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $black;
+        text-align: center;
+        line-height: $bubble-size-small;
       }
     }
   }
 }
 
 .errorMessage {
-  color: $error;
+  color: $red;
 }

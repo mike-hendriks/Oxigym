@@ -3,18 +3,14 @@ $font-family-sans-serif: "Nunito",
 sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-$bubble-size: 100px;
+$bubble-size-big: 100px;
+$bubble-size-small: 50px;
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
-$white: #f8f8f8;
-$grey: #6e6e6e;
-$error: $red;
+$white: #fff;
+$black: #000000;
+$grey: #616161;
+$red: #e33;
+$green: #83f647;
+$darkGreen: #64b63a;
+$gradientGreen: linear-gradient(to bottom right, #83f647, #64b63a);
+$background: #f8f8f8;
