@@ -1,8 +1,9 @@
 // Typography
-$font-family-sans-serif: "Nunito", sans-serif;
+$font-family-sans-serif: "Nunito",
+sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-
+$bubble-size: 100px;
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -16,5 +17,4 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $white: #f8f8f8;
 $grey: #6e6e6e;
-
 $error: $red;

@@ -68,11 +68,11 @@ class StartWorkout extends Component {
             });
     };
 
-    getUserLetter = user => {
+    getUserLetters = user => {
         let U = user;
-        let result = U.charAt(0);
+        let letters = U.substring(0, 2);
 
-        return result;
+        return letters;
     };
 
     render() {
@@ -86,7 +86,7 @@ class StartWorkout extends Component {
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                <p>{this.getUserLetter(user.name)}</p>
+                                <p>{this.getUserLetters(user.name)}</p>
                                 {/* <p>{user.point}</p> */}
                             </li>
                         );

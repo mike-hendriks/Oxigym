@@ -70,6 +70,8 @@ body {
     font-size: 5em;
   }
   h2 {
+    margin: 0;
+    margin-bottom: 25px;
     font-size: 4em;
     font-weight: bold;
   }
@@ -91,25 +93,27 @@ body {
     }
   }
   ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     list-style-type: none;
-    padding: 0;
+    padding: 15px 0;
     li {
-      display: flex;
+      margin: 15px;
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       text-decoration: none;
-      width: 120px;
-      height: 120px;
+      width: $bubble-size;
+      height: $bubble-size;
       background-color: #fff;
       border-radius: 100px;
       p {
-        color: rgba(255, 255, 255, 0);
-        &:first-letter {
-          font-size: 90px;
-          font-weight: bold;
-          text-transform: capitalize;
-          color: #64b63a;
-        }
+        font-size: 3.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #64b63a;
       }
     }
   }
