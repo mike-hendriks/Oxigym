@@ -59,6 +59,8 @@ body {
     color: #d6f5c6;
     font-size: 5em; }
   .startWorkoutContainer h2 {
+    margin: 0;
+    margin-bottom: 25px;
     font-size: 4em;
     font-weight: bold; }
   .startWorkoutContainer p {
@@ -76,24 +78,27 @@ body {
     .startWorkoutContainer button:hover {
       color: #d4d4d4; }
   .startWorkoutContainer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     list-style-type: none;
-    padding: 0; }
+    padding: 15px 0; }
     .startWorkoutContainer ul li {
-      display: flex;
+      margin: 15px;
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       text-decoration: none;
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       background-color: #fff;
       border-radius: 100px; }
       .startWorkoutContainer ul li p {
-        color: rgba(255, 255, 255, 0); }
-        .startWorkoutContainer ul li p:first-letter {
-          font-size: 90px;
-          font-weight: bold;
-          text-transform: capitalize;
-          color: #64b63a; }
+        font-size: 3.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #64b63a; }
 
 .errorMessage {
   color: #e3342f; }
