@@ -11,7 +11,9 @@ class CurrentWorkout extends Component {
             code: "",
             workout_id: "",
             users: [],
-            start: "0"
+            start: "0",
+            workout_name: '',
+            workout_duration: ''
         };
     }
 
@@ -25,6 +27,7 @@ class CurrentWorkout extends Component {
         setTimeout(() => {
             this.getPoints();
             this.getExercise();
+            this.startCountdown();
         }, 1000);
     }
 
@@ -36,16 +39,18 @@ class CurrentWorkout extends Component {
                 let users = [];
                 querySnapshot.forEach(doc => {
                     const user_id = doc.data().user_id;
-                    const point = doc.data().point;
+                    const point = doc.data().point;                    
+                    if (user_id) {
 
-                    db.collection("user")
-                        .doc(user_id)
-                        .get()
-                        .then(querySnapshot => {
-                            const name = querySnapshot.data().fullname;
-                            users.push({ user_id, name, point });
-                            this.setState({ users });
-                        });
+                        db.collection("user")
+                            .doc(user_id)
+                            .get()
+                            .then(querySnapshot => {
+                                const name = querySnapshot.data().fullname;
+                                users.push({ user_id, name, point });
+                                this.setState({ users });
+                            });
+                    }
                 });
             });
     };
@@ -57,14 +62,40 @@ class CurrentWorkout extends Component {
             .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    this.setState({ workout_name: doc.data().exercise_id});
+                    
+                    if (doc.data().exercise_id) {
+                        db.collection("exercise")
+                            .doc(doc.data().exercise_id)
+                            .get()
+                            .then(querySnapshot => {
+                                this.setState({
+                                    workout_name: querySnapshot.data().name,
+                                    workout_duration: querySnapshot.data().time,
+                                });
+                            });
+                    }
                 });
             })
-
-                    // const user_id = doc.data().user_id;
-
-            // });
     }
+
+    startCountdown = () => {
+        window.setInterval(() => {
+            let time = this.state.workout_duration;
+            time--;
+           
+            if (time >= 1) {
+                this.setState({
+                    workout_duration: time
+                })
+            } else {
+                this.props.history.push('/workoutResult');
+            }
+
+
+        }, 1000);
+
+    }
+
 
     render() {
         const { users } = this.state;
@@ -74,11 +105,11 @@ class CurrentWorkout extends Component {
                 <h2>{this.state.workout_name}</h2>
                 <h2>{this.state.code}</h2>
                 <p>{this.state.workout_id}</p>
+                <p>Time: {this.state.workout_duration}</p>
                 <ul>
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                {console.log(users)}
                                 <p>{user.name}</p>
                                 <p>{user.point}</p>
                             </li>

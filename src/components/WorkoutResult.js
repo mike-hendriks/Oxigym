@@ -4,14 +4,16 @@ const firestore = firebase.firestore();
 const settings = { /* your settings... */ timestampsInSnapshots: true };
 firestore.settings(settings);
 
-class StartWorkout extends Component {
+class WorkoutResult extends Component {
     constructor(props) {
         super(props);
         this.state = {
             code: "",
             workout_id: "",
             users: [],
-            start: "0"
+            // start: "0",
+            // workout_name: '',
+            // workout_duration: ''
         };
     }
 
@@ -27,26 +29,10 @@ class StartWorkout extends Component {
         }, 1000);
     }
 
-    handleClick = e => {
-        const db = firebase.firestore();
-
-        if (this.state.workout_id) {
-            const workoutRef = db
-                .collection("workout")
-                .doc(this.state.workout_id);
-            workoutRef.update({ start: 1 });
-
-            this.setState({
-                start: 1
-            });
-
-            this.props.history.push('/currentWorkout');
-        }
-    };
-
     getPoints = () => {
         const db = firebase.firestore();
         db.collection("point")
+            .orderBy("point", "desc")
             .where("workout_id", "==", this.state.workout_id)
             .onSnapshot(querySnapshot => {
                 let users = [];
@@ -73,22 +59,22 @@ class StartWorkout extends Component {
         const { users } = this.state;
         return (
             <div className="startWorkoutContainer">
-                <h1>Vul de code in</h1>
-                <h2>{this.state.code}</h2>
+                <h1>Results</h1>
+                <h2>{this.state.workout_name}</h2>
                 <p>{this.state.workout_id}</p>
                 <ul>
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
                                 <p>{user.name}</p>
-                                {/* <p>{user.point}</p> */}
+                                <p>{user.point}</p>
                             </li>
                         );
                     })}
                 </ul>
-                <button onClick={this.handleClick}>START</button>
             </div>
         );
     }
 }
-export default StartWorkout;
+
+export default WorkoutResult;
