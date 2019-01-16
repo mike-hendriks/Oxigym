@@ -70,7 +70,7 @@ class CurrentWorkout extends Component {
                             .then(querySnapshot => {
                                 this.setState({
                                     workout_name: querySnapshot.data().name,
-                                    workout_duration: querySnapshot.data().time,
+                                    workout_duration: querySnapshot.data().time -1,
                                 });
                             });
                     }
@@ -79,7 +79,7 @@ class CurrentWorkout extends Component {
     }
 
     startCountdown = () => {
-        window.setInterval(() => {
+        window.setInterval(() => { 
             let time = this.state.workout_duration;
             time--;
            
