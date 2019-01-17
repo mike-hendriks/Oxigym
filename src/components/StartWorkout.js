@@ -79,20 +79,17 @@ class StartWorkout extends Component {
         const { users } = this.state;
         return (
             <div className="startWorkoutContainer">
-                {" "}
-                <h1>Vul de code in</h1> <h2> {this.state.code}</h2>{" "}
+                <h1>Vul de code in</h1> <h2> {this.state.code}</h2>
                 <ul>
-                    {" "}
                     {users.map((user, i) => {
                         return (
                             <li key={i}>
-                                {" "}
-                                <p> {this.getUserLetters(user.name)}</p>{" "}
+                                <p> {this.getUserLetters(user.name)}</p>
                             </li>
                         );
                     })}
-                </ul>{" "}
-                <button onClick={this.handleClick}>START</button>{" "}
+                </ul>
+                <button onClick={this.handleClick}>START</button>
             </div>
         );
     }
